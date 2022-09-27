@@ -3,6 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
+import { PokemonProvider } from "./contexts/PokemonContext";
 import { AppThemeProvider } from "./contexts/ThemeContext";
 
 const root = ReactDOM.createRoot(
@@ -13,7 +14,9 @@ root.render(
     <AppThemeProvider>
       <CssBaseline />
       <BrowserRouter>
-        <App />
+        <PokemonProvider>
+          <App />
+        </PokemonProvider>
       </BrowserRouter>
     </AppThemeProvider>
   </React.StrictMode>

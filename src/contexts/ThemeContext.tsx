@@ -7,7 +7,7 @@ interface IThemeContextData {
   toggleTheme: () => void;
 }
 
-interface IThemeContextProvider {
+interface IThemeContextProviderProps {
   children: ReactNode;
 }
 
@@ -17,7 +17,7 @@ export const useThemeContext = () => {
   return useContext(ThemeContext);
 };
 
-export const AppThemeProvider: React.FC<IThemeContextProvider> = ({
+export const AppThemeProvider: React.FC<IThemeContextProviderProps> = ({
   children,
 }) => {
   const [themeName, setThemeName] = useState<PaletteMode>("light");
