@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { useThemeContext } from "../contexts/ThemeContext";
 import Pokeball from "../assets/pokeball.png";
 import { SearchBar } from "../components/SearchBar/SearchBar";
+import { PokemonGallery } from "../components/PokemonGallery/PokemonGallery";
 
 export const Home = () => {
   const { toggleTheme } = useThemeContext();
@@ -16,7 +17,9 @@ export const Home = () => {
         backgroundPosition: "-140% 30%",
       }}
     >
-      <SearchBar/>
+      <SearchBar />
+
+      <PokemonGallery />
     </Box>
   );
 };
