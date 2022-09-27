@@ -10,7 +10,6 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
     <AppThemeProvider>
       <CssBaseline />
       <BrowserRouter>
@@ -19,5 +18,4 @@ root.render(
         </PokemonProvider>
       </BrowserRouter>
     </AppThemeProvider>
-  </React.StrictMode>
 );
