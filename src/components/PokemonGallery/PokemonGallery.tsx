@@ -5,6 +5,7 @@ import { PokemonCard } from "../PokemonCard/PokemonCard";
 export const PokemonGallery = () => {
   const { pokemons } = usePokemonContext();
 
+console.log(pokemons)
   return (
     <Box padding={2} mt={3}>
       <Grid
@@ -15,9 +16,10 @@ export const PokemonGallery = () => {
         alignItems="center"
       >
         {pokemons.map((item, key) => {
+
           return (
-            <Grid key={key} item md={2} xs={6} >
-              <PokemonCard name={item.name}/>
+            <Grid key={key} item md={2} xs={6}>
+              <PokemonCard name={item.name} />
             </Grid>
           );
         })}
