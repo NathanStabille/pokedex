@@ -14,10 +14,10 @@ export const PokemonGallery = () => {
         justifyContent="center"
         alignItems="center"
       >
-        {pokemons.map((item) => {
+        {pokemons.map((item, key) => {
           return (
-            <Grid item xs={2}>
-              <PokemonCard />
+            <Grid key={key} item md={2} xs={6} >
+              <PokemonCard name={item.name}/>
             </Grid>
           );
         })}

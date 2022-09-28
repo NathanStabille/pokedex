@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { getAllPokemons } from "../api/pokemonAPI";
+import { getPokemonsData, getPokemonsRef } from "../api/pokemonAPI";
 
 interface IPokemonsData {
   name: string;
@@ -34,12 +34,15 @@ export const PokemonProvider: React.FC<IPokemonProviderProps> = ({
 
   useEffect(() => {
     const getPokemons = async () => {
-      setPokemons(await getAllPokemons())
+      const data = await getPokemonsRef()
+      // const result = data.map(
+      //  async (data: any) => await getPokemonsData(data.url)
+      // );
+      // console.log(result);
     };
 
     getPokemons();
   }, []);
-
 
   return (
     <PokemonContext.Provider value={{ pokemons, setPokemons }}>
