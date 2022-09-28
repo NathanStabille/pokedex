@@ -34,16 +34,16 @@ export const PokemonProvider: React.FC<IPokemonProviderProps> = ({
 
   useEffect(() => {
     const getPokemons = async () => {
-      const data = await getPokemonsRef()
-      // const result = data.map(
-      //  async (data: any) => await getPokemonsData(data.url)
-      // );
-      // console.log(result);
+      const data = await getPokemonsRef();
+      const result = data.map((pokemon: IPokemonsData) => pokemon.url);
+      Promise.all(result.map((item: string) => getPokemonsData(item)))
+      .then((res) => setPokemons(res));
     };
 
     getPokemons();
   }, []);
 
+  console.log(pokemons)
   return (
     <PokemonContext.Provider value={{ pokemons, setPokemons }}>
       {children}
