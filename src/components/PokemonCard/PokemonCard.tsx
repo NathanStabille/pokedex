@@ -1,20 +1,39 @@
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
-import { usePokemonContext } from "../../contexts/PokemonContext";
 
 interface IPokemonCardProps {
   name: string;
+  number: number;
+  type: IPokemonTypes[];
+  image: string;
 }
 
-export const PokemonCard = ({ name }: IPokemonCardProps) => {
-  const { pokemons } = usePokemonContext();
+interface IPokemonTypes {
+  slot: number;
+  type: { name: string; url: string };
+}
 
-
+export const PokemonCard = ({
+  name,
+  number,
+  type,
+  image,
+}: IPokemonCardProps) => {
   return (
-    <Card sx={{ width: 250, borderRadius: 3 }}>
-      <CardMedia component="img" image="" height="200" />
+    <Card sx={{ width: 220, borderRadius: 3, height: 350 }}>
+      <CardMedia
+        component="img"
+        src={image}
+        height="230"
+        sx={{ width: "100%", padding: 3 }}
+      />
 
-      <CardContent>
+      <CardContent sx={{textTransform: 'capitalize'}}>
+        <Typography>{`#${number}`}</Typography>
         <Typography>{name}</Typography>
+
+        {type.map((item) => {
+          return <Typography>{item.type.name}</Typography>;
+        })}
       </CardContent>
     </Card>
   );

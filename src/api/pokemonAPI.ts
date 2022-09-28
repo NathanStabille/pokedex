@@ -12,9 +12,8 @@ export const getPokemonsData = async (url: string) => {
     .catch((err) => console.log(err));
 
   return {
-
     name: res.name,
-    image: res.sprites.other['official-artwork'].front_default,
+    image: res.sprites.other["official-artwork"].front_default,
     number: res.id,
     region: res.location_area_encounters,
     height: res.height,
@@ -23,7 +22,7 @@ export const getPokemonsData = async (url: string) => {
     attack: res.stats[1].base_stat,
     defense: res.stats[2].base_stat,
     spAttack: res.stats[3].base_stat,
-    spDefense:res.stats[4].base_stat,
+    spDefense: res.stats[4].base_stat,
     speed: res.stats[5].base_stat,
     type: res.types,
   };

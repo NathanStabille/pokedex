@@ -6,15 +6,16 @@ import {
   useState,
 } from "react";
 import { getPokemonsData, getPokemonsRef } from "../api/pokemonAPI";
+import {IPokemonData} from '../models/PokemonData'
 
-interface IPokemonsData {
+interface IPokemons {
   name: string;
   url: string;
 }
 
 interface IPokemonContextData {
-  pokemons: IPokemonsData[];
-  setPokemons: (pokemons: IPokemonsData[]) => void;
+  pokemons: IPokemonData[];
+  setPokemons: (pokemons: IPokemonData[]) => void;
 }
 
 interface IPokemonProviderProps {
@@ -30,12 +31,12 @@ export const usePokemonContext = () => {
 export const PokemonProvider: React.FC<IPokemonProviderProps> = ({
   children,
 }) => {
-  const [pokemons, setPokemons] = useState([] as IPokemonsData[]);
+  const [pokemons, setPokemons] = useState([] as IPokemonData[]);
 
   useEffect(() => {
     const getPokemons = async () => {
       const data = await getPokemonsRef();
-      const result = data.map((pokemon: IPokemonsData) => pokemon.url);
+      const result = data.map((pokemon: IPokemons) => pokemon.url);
       Promise.all(result.map((item: string) => getPokemonsData(item)))
       .then((res) => setPokemons(res));
     };
@@ -43,7 +44,6 @@ export const PokemonProvider: React.FC<IPokemonProviderProps> = ({
     getPokemons();
   }, []);
 
-  console.log(pokemons)
   return (
     <PokemonContext.Provider value={{ pokemons, setPokemons }}>
       {children}
