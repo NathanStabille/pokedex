@@ -1,5 +1,23 @@
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import Pokeball from "../../assets/pokeball-opacity.png";
+import bug from "../../assets/icons/bug.png";
+import dark from "../../assets/icons/dark.png";
+import dragon from "../../assets/icons/dragon.png";
+import eletric from "../../assets/icons/eletric.png";
+import fairy from "../../assets/icons/fairy.png";
+import fighting from "../../assets/icons/fighting.png";
+import fire from "../../assets/icons/fire.png";
+import flying from "../../assets/icons/flying.png";
+import ghost from "../../assets/icons/ghost.png";
+import grass from "../../assets/icons/grass.png";
+import ground from "../../assets/icons/ground.png";
+import ice from "../../assets/icons/ice.png";
+import normal from "../../assets/icons/normal.png";
+import poison from "../../assets/icons/poison.png";
+import psychic from "../../assets/icons/psychic.png";
+import rock from "../../assets/icons/rock.png";
+import steel from "../../assets/icons/steel.png";
+import water from "../../assets/icons/water.png";
 
 interface IPokemonCardProps {
   name: string;
@@ -12,6 +30,88 @@ interface IPokemonTypes {
   slot: number;
   type: { name: string; url: string };
 }
+
+export const addTypeIcon = (type: string) => {
+  switch (type) {
+    case "bug":
+      return bug;
+    case "dark":
+      return dark;
+    case "dragon":
+      return dragon;
+    case "eletric":
+      return eletric;
+    case "fairy":
+      return fairy;
+    case "fighting":
+      return fighting;
+    case "fire":
+      return fire;
+    case "flying":
+      return flying;
+    case "ghost":
+      return ghost;
+    case "grass":
+      return grass;
+    case "ground":
+      return ground;
+    case "ice":
+      return ice;
+    case "normal":
+      return normal;
+    case "poison":
+      return poison;
+    case "psychic":
+      return psychic;
+    case "rock":
+      return rock;
+    case "steel":
+      return steel;
+    case "water":
+      return water;
+  }
+};
+
+export const changeColor = (type: string) => {
+  switch (type) {
+    case "bug":
+      return "#90c12c";
+    case "dark":
+      return "#5c5464";
+    case "dragon":
+      return "#0a6dc4";
+    case "eletric":
+      return "#f3d23b";
+    case "fairy":
+      return "#ec8fe6";
+    case "fighting":
+      return "#ce4069";
+    case "fire":
+      return "#ff9c54";
+    case "flying":
+      return "#8fa8dd";
+    case "ghost":
+      return "#5269ac";
+    case "grass":
+      return "#63bb5b";
+    case "ground":
+      return "#d97746";
+    case "ice":
+      return "#74cec0";
+    case "normal":
+      return "#9099a1";
+    case "poison":
+      return "#ab6ac8";
+    case "psychic":
+      return "#f97176";
+    case "rock":
+      return "#c7b78b";
+    case "steel":
+      return "#5a8ea1";
+    case "water":
+      return "#4d90d5";
+  }
+};
 
 export const PokemonCard = ({
   name,
@@ -31,24 +131,13 @@ export const PokemonCard = ({
     }
   };
 
-  const changeColor = (type: string) => {
-    switch (type) {
-      case "grass":
-        return "green";
-
-      case "poison":
-        return "purple";
-    }
-  };
-
   return (
     <Card
       sx={{
         width: 220,
         borderRadius: 3,
         height: 350,
-        background: `#94949413 url(${image}) `,
-        backgroundBlendMode: "luminosity",
+        background: `#94949413 `,
         backdropFilter: "blur(5px)",
         cursor: "pointer",
       }}
@@ -68,13 +157,35 @@ export const PokemonCard = ({
         }}
       />
 
-      <CardContent sx={{ textTransform: "capitalize" }}>
+      <CardContent sx={{ textTransform: "capitalize", width: "100%" }}>
         <Typography fontSize="1.1rem" sx={{ opacity: 0.5 }}>
           {`#${addZero(number)}${number}`}
         </Typography>
-        <Typography fontSize="1.4rem" fontWeight="600" mb={1}>
-          {name}
-        </Typography>
+        <Box
+          width="100%"
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          mb={1}
+        >
+          <Typography fontSize="1.4rem" fontWeight="600">
+            {name}
+          </Typography>
+
+          <Box display="flex" alignItems="center">
+            {type.map((item, key) => {
+              return (
+                <img
+                  key={key}
+                  src={addTypeIcon(item.type.name)}
+                  alt=""
+                  width="30px"
+                  style={{ marginLeft: 5 }}
+                />
+              );
+            })}
+          </Box>
+        </Box>
         <Box display="flex" alignItems="center">
           {type.map((item, key) => {
             return (
