@@ -24,6 +24,7 @@ interface IPokemonCardProps {
   number: number;
   type: IPokemonTypes[];
   image: string;
+  shiny?: string;
 }
 
 interface IPokemonTypes {
@@ -39,7 +40,7 @@ export const addTypeIcon = (type: string) => {
       return dark;
     case "dragon":
       return dragon;
-    case "eletric":
+    case "electric":
       return eletric;
     case "fairy":
       return fairy;
@@ -75,12 +76,12 @@ export const addTypeIcon = (type: string) => {
 export const changeColor = (type: string) => {
   switch (type) {
     case "bug":
-      return "#90c12c";
+      return "#8fc12c";
     case "dark":
       return "#5c5464";
     case "dragon":
       return "#0a6dc4";
-    case "eletric":
+    case "electric":
       return "#f3d23b";
     case "fairy":
       return "#ec8fe6";
@@ -118,6 +119,7 @@ export const PokemonCard = ({
   number,
   type,
   image,
+  shiny,
 }: IPokemonCardProps) => {
   const addZero = (number: number) => {
     const idString = number.toString();
@@ -131,13 +133,14 @@ export const PokemonCard = ({
     }
   };
 
+  const pokemonTypes = type.map((item) => item.type.name.split(","));
   return (
     <Card
       sx={{
         width: 220,
         borderRadius: 3,
         height: 350,
-        background: `#94949413 `,
+        background: changeColor(pokemonTypes[0][0]),
         backdropFilter: "blur(5px)",
         cursor: "pointer",
       }}
@@ -195,7 +198,7 @@ export const PokemonCard = ({
                 paddingX={1}
                 fontSize="1.1rem"
                 fontWeight="500"
-                bgcolor="#ffffff62"
+                bgcolor="#ffffff44"
                 borderRadius={3}
               >
                 {item.type.name}

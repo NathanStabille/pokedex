@@ -23,6 +23,7 @@ export const PokemonGallery = () => {
                     image={item.image}
                     type={item.type}
                     number={item.number}
+                    shiny={item.shiny}
                   />
                 </Grid>
               );
@@ -35,6 +36,7 @@ export const PokemonGallery = () => {
                     image={item.image}
                     type={item.type}
                     number={item.number}
+                    shiny={item.shiny}
                   />
                 </Grid>
               );
