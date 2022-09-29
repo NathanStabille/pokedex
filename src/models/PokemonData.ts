@@ -1,6 +1,7 @@
 export interface IPokemonData {
   name: string;
   image: string;
+  shiny: string;
   number: number;
   region: string;
   height: number;

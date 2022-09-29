@@ -49,14 +49,15 @@ export const PokemonCard = ({
         <Typography fontSize="1.1rem" sx={{ opacity: 0.5 }}>
           {`#${number}`}
         </Typography>
-        <Typography fontSize="1.4rem" fontWeight="600">
+        <Typography fontSize="1.4rem" fontWeight="600" mb={1}>
           {name}
         </Typography>
         <Box display="flex" alignItems="center">
-          {type.map((item) => {
+          {type.map((item, key) => {
             return (
               <Typography
-                mr={5}
+                key={key}
+                mr={3}
                 paddingX={1}
                 fontSize="1.1rem"
                 fontWeight="500"

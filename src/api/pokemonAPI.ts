@@ -14,6 +14,7 @@ export const getPokemonsData = async (url: string) => {
   return {
     name: res.name,
     image: res.sprites.other["official-artwork"].front_default,
+    shiny: res.sprites.front_shiny,
     number: res.id,
     region: res.location_area_encounters,
     height: res.height,
