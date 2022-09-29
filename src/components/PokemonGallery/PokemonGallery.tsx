@@ -5,7 +5,6 @@ import { PokemonCard } from "../PokemonCard/PokemonCard";
 export const PokemonGallery = () => {
   const { pokemons, filteredPokemons } = usePokemonContext();
 
-  console.log(filteredPokemons);
   return (
     <Box mt={3}>
       <Grid

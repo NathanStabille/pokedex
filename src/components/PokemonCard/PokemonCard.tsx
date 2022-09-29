@@ -19,6 +19,18 @@ export const PokemonCard = ({
   type,
   image,
 }: IPokemonCardProps) => {
+  const addZero = (number: number) => {
+    const idString = number.toString();
+    const length = idString.length;
+
+    switch (length) {
+      case 1:
+        return "00";
+      case 2:
+        return "0";
+    }
+  };
+
   return (
     <Card
       sx={{
@@ -47,7 +59,7 @@ export const PokemonCard = ({
 
       <CardContent sx={{ textTransform: "capitalize" }}>
         <Typography fontSize="1.1rem" sx={{ opacity: 0.5 }}>
-          {`#${number}`}
+          {`#${addZero(number)}${number}`}
         </Typography>
         <Typography fontSize="1.4rem" fontWeight="600" mb={1}>
           {name}
