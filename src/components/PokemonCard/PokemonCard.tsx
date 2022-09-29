@@ -127,9 +127,15 @@ export const PokemonCard = ({
 
     switch (length) {
       case 1:
-        return "00";
+        return "000";
       case 2:
+        return "00";
+      case 3:
         return "0";
+      case 4:
+        return "";
+      default:
+        return "";
     }
   };
 
