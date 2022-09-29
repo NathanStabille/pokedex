@@ -31,13 +31,24 @@ export const PokemonCard = ({
     }
   };
 
+  const changeColor = (type: string) => {
+    switch (type) {
+      case "grass":
+        return "green";
+
+      case "poison":
+        return "purple";
+    }
+  };
+
   return (
     <Card
       sx={{
         width: 220,
         borderRadius: 3,
         height: 350,
-        backgroundColor: "#92929222",
+        background: `#94949413 url(${image}) `,
+        backgroundBlendMode: "luminosity",
         backdropFilter: "blur(5px)",
         cursor: "pointer",
       }}
