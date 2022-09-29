@@ -16,7 +16,7 @@ export const PokemonGallery = () => {
       >
         {pokemons.map((item, key) => {
           return (
-            <Grid key={key} item md={2} xs={6}>
+            <Grid key={key} item md={2} xs={6} >
               <PokemonCard
                 name={item.name}
                 image={item.image}
