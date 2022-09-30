@@ -4,12 +4,14 @@ import { SearchBar } from "../components/SearchBar/SearchBar";
 import { PokemonGallery } from "../components/PokemonGallery/PokemonGallery";
 import PokedexLogo from "../assets/PokedexLogo.png";
 import { useNavigate } from "react-router-dom";
+import { SelectGeneration } from "../components/SelectGeneration/SelectGeneration";
 
 export const Home = () => {
   const navigate = useNavigate();
   return (
     <Box
       height="100%"
+      width="100%"
       padding="2%"
       display="flex"
       flexDirection="column"
@@ -33,7 +35,16 @@ export const Home = () => {
         width="350px"
         style={{ cursor: "pointer" }}
       />
-      <SearchBar />
+      <Box
+        width="100%"
+        paddingX="5%"
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <SelectGeneration />
+        <SearchBar />
+      </Box>
 
       <PokemonGallery />
     </Box>

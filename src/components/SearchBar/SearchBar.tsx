@@ -10,6 +10,7 @@ import { usePokemonContext } from "../../contexts/PokemonContext";
 import { useThemeContext } from "../../contexts/ThemeContext";
 
 export const SearchBar = () => {
+
   const theme = useTheme();
 
   const { themeName, toggleTheme } = useThemeContext();
@@ -24,7 +25,6 @@ export const SearchBar = () => {
 
   return (
     <Box
-      width="100%"
       display="flex"
       justifyContent="flex-end"
       alignItems="center"
