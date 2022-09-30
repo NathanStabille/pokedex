@@ -1,3 +1,4 @@
+import { KeyboardArrowDown } from "@mui/icons-material";
 import { Box, MenuItem, Select } from "@mui/material";
 
 export const SelectGeneration = () => {
@@ -9,6 +10,7 @@ export const SelectGeneration = () => {
         autoWidth
         defaultValue={1}
         sx={{ fontSize: "1.1rem" }}
+        IconComponent={KeyboardArrowDown}
       >
         <MenuItem value={1}>1st Generation</MenuItem>
         <MenuItem value={2}>2st Generation</MenuItem>
