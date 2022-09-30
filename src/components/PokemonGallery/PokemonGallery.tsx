@@ -1,9 +1,16 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Skeleton, Stack } from "@mui/material";
 import { usePokemonContext } from "../../contexts/PokemonContext";
 import { PokemonCard } from "../PokemonCard/PokemonCard";
+import Gradient from "../../assets/gradient.jpg";
 
 export const PokemonGallery = () => {
-  const { pokemons, filteredPokemons } = usePokemonContext();
+  const { pokemons, filteredPokemons, loading } = usePokemonContext();
+
+  const loadingItemsTemplate = [] as number[];
+
+  for (let index = 0; index < 150; index++) {
+    loadingItemsTemplate.push(index);
+  }
 
   return (
     <Box mt={3}>
@@ -13,33 +20,44 @@ export const PokemonGallery = () => {
         direction="row"
         justifyContent="center"
         alignItems="center"
+        mb={5}
       >
+        {loading &&
+          loadingItemsTemplate.map(() => (
+            <Stack spacing={1}>
+              <Skeleton variant="rounded" height={300} width={220} />
+              <Skeleton variant="rounded" height={100} width={220} />
+            </Stack>
+          ))}
+
         {filteredPokemons.length > 0
           ? filteredPokemons.map((item, key) => {
-              return (
-                <Grid key={key} item>
-                  <PokemonCard
-                    name={item.name}
-                    image={item.image}
-                    type={item.type}
-                    number={item.number}
-                    shiny={item.shiny}
-                  />
-                </Grid>
-              );
+              if (item.image) {
+                return (
+                  <Grid key={key} item>
+                    <PokemonCard
+                      name={item.name}
+                      image={item.image}
+                      type={item.type}
+                      number={item.number}
+                    />
+                  </Grid>
+                );
+              }
             })
           : pokemons.map((item, key) => {
-              return (
-                <Grid key={key} item>
-                  <PokemonCard
-                    name={item.name}
-                    image={item.image}
-                    type={item.type}
-                    number={item.number}
-                    shiny={item.shiny}
-                  />
-                </Grid>
-              );
+              if (item.image) {
+                return (
+                  <Grid key={key} item>
+                    <PokemonCard
+                      name={item.name}
+                      image={item.image}
+                      type={item.type}
+                      number={item.number}
+                    />
+                  </Grid>
+                );
+              }
             })}
       </Grid>
     </Box>

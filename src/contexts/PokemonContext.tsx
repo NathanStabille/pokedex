@@ -18,6 +18,8 @@ interface IPokemonContextData {
   setPokemons: (pokemons: IPokemonData[]) => void;
   filteredPokemons: IPokemonData[];
   setFilteredPokemons: (filteredPokemons: IPokemonData[]) => void;
+  loading: boolean;
+  getAllPokemons: (number: number) => void;
 }
 
 interface IPokemonProviderProps {
@@ -37,22 +39,34 @@ export const PokemonProvider: React.FC<IPokemonProviderProps> = ({
   const [filteredPokemons, setFilteredPokemons] = useState(
     [] as IPokemonData[]
   );
+  const [loading, setLoading] = useState(true);
+
+  const getAllPokemons = async (number = 150) => {
+    setLoading(true)
+    const data = await getPokemonsRef(number);
+    const result = data.map((pokemon: IPokemons) => pokemon.url);
+    Promise.all(result.map((item: string) => getPokemonsData(item))).then(
+      (res) => {
+        setPokemons(res);
+        setLoading(false);
+      }
+    );
+  };
 
   useEffect(() => {
-    const getAllPokemons = async () => {
-      const data = await getPokemonsRef();
-      const result = data.map((pokemon: IPokemons) => pokemon.url);
-      Promise.all(result.map((item: string) => getPokemonsData(item))).then(
-        (res) => setPokemons(res)
-      );
-    };
-
     getAllPokemons();
   }, []);
 
   return (
     <PokemonContext.Provider
-      value={{ filteredPokemons, setFilteredPokemons, pokemons, setPokemons }}
+      value={{
+        filteredPokemons,
+        setFilteredPokemons,
+        pokemons,
+        setPokemons,
+        loading,
+        getAllPokemons,
+      }}
     >
       {children}
     </PokemonContext.Provider>

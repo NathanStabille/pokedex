@@ -3,8 +3,10 @@ import Pokeball from "../assets/pokeball.png";
 import { SearchBar } from "../components/SearchBar/SearchBar";
 import { PokemonGallery } from "../components/PokemonGallery/PokemonGallery";
 import PokedexLogo from "../assets/PokedexLogo.png";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
+  const navigate = useNavigate();
   return (
     <Box
       height="100%"
@@ -24,7 +26,13 @@ export const Home = () => {
           zIndex: -1,
         }}
       />
-      <img src={PokedexLogo} alt="pokemon" width='350px' />
+      <img
+        src={PokedexLogo}
+        onClick={() => navigate("/pokedex")}
+        alt="pokemon"
+        width="350px"
+        style={{ cursor: "pointer" }}
+      />
       <SearchBar />
 
       <PokemonGallery />

@@ -24,7 +24,6 @@ interface IPokemonCardProps {
   number: number;
   type: IPokemonTypes[];
   image: string;
-  shiny?: string;
 }
 
 interface IPokemonTypes {
@@ -119,7 +118,6 @@ export const PokemonCard = ({
   number,
   type,
   image,
-  shiny,
 }: IPokemonCardProps) => {
   const addZero = (number: number) => {
     const idString = number.toString();
@@ -127,13 +125,9 @@ export const PokemonCard = ({
 
     switch (length) {
       case 1:
-        return "000";
-      case 2:
         return "00";
-      case 3:
+      case 2:
         return "0";
-      case 4:
-        return "";
       default:
         return "";
     }
@@ -145,7 +139,7 @@ export const PokemonCard = ({
       sx={{
         width: 220,
         borderRadius: 3,
-        height: 350,
+        height: 400,
         background: changeColor(pokemonTypes[0][0]),
         backdropFilter: "blur(5px)",
         cursor: "pointer",
@@ -166,33 +160,44 @@ export const PokemonCard = ({
         }}
       />
 
-      <CardContent sx={{ textTransform: "capitalize", width: "100%" }}>
-        <Typography fontSize="1.1rem" sx={{ opacity: 0.5 }}>
-          {`#${addZero(number)}${number}`}
-        </Typography>
-        <Box
-          width="100%"
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          mb={1}
-        >
-          <Typography fontSize="1.4rem" fontWeight="600">
-            {name}
+      <CardContent
+        sx={{
+          textTransform: "capitalize",
+          width: "100%",
+          height: 180,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
+        <Box>
+          <Typography fontSize="1.1rem" sx={{ opacity: 0.5 }}>
+            {`#${addZero(number)}${number}`}
           </Typography>
+          <Box
+            width="100%"
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+            mb={1}
+          >
+            <Typography fontSize="1.4rem" fontWeight="600">
+              {name}
+            </Typography>
 
-          <Box display="flex" alignItems="center">
-            {type.map((item, key) => {
-              return (
-                <img
-                  key={key}
-                  src={addTypeIcon(item.type.name)}
-                  alt=""
-                  width="30px"
-                  style={{ marginLeft: 5 }}
-                />
-              );
-            })}
+            <Box display="flex" alignItems="center">
+              {type.map((item, key) => {
+                return (
+                  <img
+                    key={key}
+                    src={addTypeIcon(item.type.name)}
+                    alt=""
+                    width="30px"
+                    style={{ marginLeft: 5 }}
+                  />
+                );
+              })}
+            </Box>
           </Box>
         </Box>
         <Box display="flex" alignItems="center">

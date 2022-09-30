@@ -1,5 +1,10 @@
-import { LightMode, NightsStay, Search } from "@mui/icons-material";
-import { Box, IconButton, Input, useTheme } from "@mui/material";
+import {
+  CatchingPokemon,
+  LightMode,
+  NightsStay,
+  Search,
+} from "@mui/icons-material";
+import { Box, Button, IconButton, Input, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import { usePokemonContext } from "../../contexts/PokemonContext";
 import { useThemeContext } from "../../contexts/ThemeContext";
@@ -8,7 +13,7 @@ export const SearchBar = () => {
   const theme = useTheme();
 
   const { themeName, toggleTheme } = useThemeContext();
-  const { pokemons, setFilteredPokemons } = usePokemonContext();
+  const { pokemons, setFilteredPokemons, getAllPokemons } = usePokemonContext();
   const [search, setsearch] = useState("");
 
   useEffect(() => {
@@ -25,6 +30,13 @@ export const SearchBar = () => {
       alignItems="center"
       mt={3}
     >
+      <Button
+        sx={{ color: "#0888ff", mr: 2 }}
+        onClick={() => getAllPokemons(100000)}
+      >
+        <CatchingPokemon sx={{ mr: 1 }} />
+        Load all pokemons
+      </Button>
       <Box bgcolor={theme.palette.background.paper} borderRadius={4} mr={2}>
         <Input
           disableUnderline
