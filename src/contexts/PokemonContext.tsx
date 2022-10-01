@@ -19,7 +19,7 @@ interface IPokemonContextData {
   filteredPokemons: IPokemonData[];
   setFilteredPokemons: (filteredPokemons: IPokemonData[]) => void;
   loading: boolean;
-  getAllPokemons: (number: number) => void;
+  getAllPokemons: (number: number, offset: number) => void;
 }
 
 interface IPokemonProviderProps {
@@ -41,9 +41,9 @@ export const PokemonProvider: React.FC<IPokemonProviderProps> = ({
   );
   const [loading, setLoading] = useState(true);
 
-  const getAllPokemons = async (number = 151) => {
+  const getAllPokemons = async (number = 151, offset = 0) => {
     setLoading(true)
-    const data = await getPokemonsRef(number);
+    const data = await getPokemonsRef(number, offset);
     const result = data.map((pokemon: IPokemons) => pokemon.url);
     Promise.all(result.map((item: string) => getPokemonsData(item))).then(
       (res) => {

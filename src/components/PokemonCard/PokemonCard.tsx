@@ -134,15 +134,20 @@ export const PokemonCard = ({
   };
 
   const pokemonTypes = type.map((item) => item.type.name.split(","));
+  console.log(name);
   return (
     <Card
       sx={{
-        width: 220,
+        width: 250,
         borderRadius: 3,
-        height: 400,
+        height: 420,
         background: changeColor(pokemonTypes[0][0]),
         backdropFilter: "blur(5px)",
         cursor: "pointer",
+        ":hover": {
+          transform: 'scale(1.1)' ,
+          transition: "0.3s ",
+        },
       }}
     >
       <CardMedia
@@ -164,7 +169,7 @@ export const PokemonCard = ({
         sx={{
           textTransform: "capitalize",
           width: "100%",
-          height: 180,
+          height: 200,
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
@@ -182,7 +187,7 @@ export const PokemonCard = ({
             mb={1}
           >
             <Typography fontSize="1.4rem" fontWeight="600">
-              {name}
+              {name.replace(/-/gi, " ")}
             </Typography>
 
             <Box display="flex" alignItems="center">

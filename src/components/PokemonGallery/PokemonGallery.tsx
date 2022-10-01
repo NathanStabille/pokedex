@@ -1,7 +1,6 @@
 import { Box, Grid, Skeleton, Stack } from "@mui/material";
 import { usePokemonContext } from "../../contexts/PokemonContext";
 import { PokemonCard } from "../PokemonCard/PokemonCard";
-import Gradient from "../../assets/gradient.jpg";
 
 export const PokemonGallery = () => {
   const { pokemons, filteredPokemons, loading } = usePokemonContext();

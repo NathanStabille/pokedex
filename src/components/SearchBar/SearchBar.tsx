@@ -32,7 +32,7 @@ export const SearchBar = () => {
     >
       <Button
         sx={{ color: "#0888ff", mr: 2 }}
-        onClick={() => getAllPokemons(100000)}
+        onClick={() => getAllPokemons(100000, 0)}
       >
         <CatchingPokemon sx={{ mr: 1 }} />
         Load all pokemons
