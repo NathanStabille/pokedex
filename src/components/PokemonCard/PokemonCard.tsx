@@ -140,7 +140,7 @@ export const PokemonCard = ({
       sx={{
         width: 250,
         borderRadius: 3,
-        height: 420,
+        height: 440,
         background: changeColor(pokemonTypes[0][0]),
         backdropFilter: "blur(5px)",
         cursor: "pointer",
@@ -153,7 +153,7 @@ export const PokemonCard = ({
       <CardMedia
         component="img"
         src={image}
-        height="230"
+        height="250"
         sx={{
           width: "100%",
           padding: 3,
