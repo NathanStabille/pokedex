@@ -75,66 +75,64 @@ export const addTypeIcon = (type: string) => {
 export const changeColor = (type: string) => {
   switch (type) {
     case "bug":
-      return "#8fc12c";
+      return "#b9e464";
     case "dark":
-      return "#5c5464";
+      return "#71677a";
     case "dragon":
-      return "#0a6dc4";
+      return "#329af5";
     case "electric":
-      return "#f3d23b";
+      return "#fde05c";
     case "fairy":
-      return "#ec8fe6";
+      return "#f8a6f3";
     case "fighting":
-      return "#ce4069";
+      return "#fa5986";
     case "fire":
-      return "#ff9c54";
+      return "#fda567";
     case "flying":
-      return "#8fa8dd";
+      return "#abc4fa";
     case "ghost":
-      return "#5269ac";
+      return "#708ee9";
     case "grass":
-      return "#63bb5b";
+      return "#7ff775";
     case "ground":
-      return "#d97746";
+      return "#f88951";
     case "ice":
-      return "#74cec0";
+      return "#89f5e5";
     case "normal":
-      return "#9099a1";
+      return "#bbc7d1";
     case "poison":
-      return "#ab6ac8";
+      return "#d988ff";
     case "psychic":
-      return "#f97176";
+      return "#fa898d";
     case "rock":
-      return "#c7b78b";
+      return "#e0ce9c";
     case "steel":
-      return "#5a8ea1";
+      return "#7ac0da";
     case "water":
-      return "#4d90d5";
+      return "#5ca2e9";
   }
 };
 
+export const addZero = (number: number) => {
+  const idString = number.toString();
+  const length = idString.length;
+
+  switch (length) {
+    case 1:
+      return "00";
+    case 2:
+      return "0";
+    default:
+      return "";
+  }
+};
 export const PokemonCard = ({
   name,
   number,
   type,
   image,
 }: IPokemonCardProps) => {
-  const addZero = (number: number) => {
-    const idString = number.toString();
-    const length = idString.length;
-
-    switch (length) {
-      case 1:
-        return "00";
-      case 2:
-        return "0";
-      default:
-        return "";
-    }
-  };
-
   const pokemonTypes = type.map((item) => item.type.name.split(","));
-  console.log(name);
   return (
     <Card
       sx={{
@@ -145,7 +143,7 @@ export const PokemonCard = ({
         backdropFilter: "blur(5px)",
         cursor: "pointer",
         ":hover": {
-          transform: 'scale(1.1)' ,
+          transform: "scale(1.1)",
           transition: "0.3s ",
         },
       }}
