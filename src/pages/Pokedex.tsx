@@ -1,28 +1,9 @@
-import { Box, Divider, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import {
   addTypeIcon,
   addZero,
   changeColor,
 } from "../components/PokemonCard/PokemonCard";
-import Pokeball from "../../assets/pokeball-opacity.png";
-import bug from "../../assets/icons/bug.png";
-import dark from "../../assets/icons/dark.png";
-import dragon from "../../assets/icons/dragon.png";
-import eletric from "../../assets/icons/eletric.png";
-import fairy from "../../assets/icons/fairy.png";
-import fighting from "../../assets/icons/fighting.png";
-import fire from "../../assets/icons/fire.png";
-import flying from "../../assets/icons/flying.png";
-import ghost from "../../assets/icons/ghost.png";
-import grass from "../../assets/icons/grass.png";
-import ground from "../../assets/icons/ground.png";
-import ice from "../../assets/icons/ice.png";
-import normal from "../../assets/icons/normal.png";
-import poison from "../../assets/icons/poison.png";
-import psychic from "../../assets/icons/psychic.png";
-import rock from "../../assets/icons/rock.png";
-import steel from "../../assets/icons/steel.png";
-import water from "../../assets/icons/water.png";
 
 const pokemon = {
   name: "squirtle",
@@ -49,9 +30,9 @@ export const Pokedex = () => {
   return (
     <Box
       height="100vh"
-      width="100%"
+      width="100vw"
       bgcolor={changeColor(pokemon.type)}
-      padding="2%"
+      padding={3}
     >
       <Box color="#FFF">
         <Typography fontSize="1.5rem">
@@ -92,21 +73,23 @@ export const Pokedex = () => {
           </Typography>
 
           <img
+            alt="pokemon"
             src={pokemon.image}
-            style={{ width: "450px", marginRight: "50px" }}
+            style={{ maxWidth: "450px", marginRight: "50px" }}
           />
         </Box>
-        
+
         <Box
           display="flex"
           justifyContent="center"
           flexDirection="column"
           alignItems="flex-start"
           width="100%"
-          borderLeft='5px solid #ffffff7b'
+          borderLeft="5px solid #ffffff7b"
           paddingLeft={5}
         >
           <img
+            alt="type"
             src={addTypeIcon(pokemon.type)}
             style={{ borderRadius: "100%" }}
             width="50px"
