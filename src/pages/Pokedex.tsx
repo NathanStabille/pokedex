@@ -87,6 +87,7 @@ export const Pokedex = () => {
           width="100%"
           borderLeft="5px solid #ffffff7b"
           paddingLeft={5}
+          color={changeColor(pokemon.type)}
         >
           <img
             alt="type"
@@ -99,37 +100,37 @@ export const Pokedex = () => {
           </Typography>
           <Typography
             mb={2}
-            bgcolor="#ffffff92"
+            bgcolor="#ffffff"
             paddingX={1.5}
             borderRadius={3}
           >{`HP ${pokemon.hp}`}</Typography>
           <Typography
             mb={2}
-            bgcolor="#ffffff92"
+            bgcolor="#ffffff"
             paddingX={1.5}
             borderRadius={3}
           >{`ATTACK ${pokemon.attack}`}</Typography>
           <Typography
             mb={2}
-            bgcolor="#ffffff92"
+            bgcolor="#ffffff"
             paddingX={1.5}
             borderRadius={3}
           >{`DEFENSE ${pokemon.defense}`}</Typography>
           <Typography
             mb={2}
-            bgcolor="#ffffff92"
+            bgcolor="#ffffff"
             paddingX={1.5}
             borderRadius={3}
           >{`SP. ATTACK ${pokemon.spAttack}`}</Typography>
           <Typography
             mb={2}
-            bgcolor="#ffffff92"
+            bgcolor="#ffffff"
             paddingX={1.5}
             borderRadius={3}
           >{`SP. DEFENSE ${pokemon.spDefense}`}</Typography>
           <Typography
             mb={2}
-            bgcolor="#ffffff92"
+            bgcolor="#ffffff"
             paddingX={1.5}
             borderRadius={3}
           >{`SPEED ${pokemon.speed}`}</Typography>
