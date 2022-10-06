@@ -18,6 +18,7 @@ import psychic from "../../assets/icons/psychic.png";
 import rock from "../../assets/icons/rock.png";
 import steel from "../../assets/icons/steel.png";
 import water from "../../assets/icons/water.png";
+import { useNavigate } from "react-router-dom";
 
 interface IPokemonCardProps {
   name: string;
@@ -132,6 +133,12 @@ export const PokemonCard = ({
   type,
   image,
 }: IPokemonCardProps) => {
+  const navigate = useNavigate();
+
+  const toPokemon = (id: number) => {
+    navigate("/pokedex");
+    console.log(id);
+  };
   const pokemonTypes = type.map((item) => item.type.name.split(","));
   return (
     <Card
@@ -147,6 +154,7 @@ export const PokemonCard = ({
           transition: "0.3s ",
         },
       }}
+      onClick={() => toPokemon(number)}
     >
       <CardMedia
         component="img"

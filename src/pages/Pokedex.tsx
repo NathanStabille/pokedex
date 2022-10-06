@@ -1,6 +1,7 @@
 import { KeyboardArrowLeft } from "@mui/icons-material";
 import { Box, Container, IconButton, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { getPokemonById } from "../api/pokemonAPI";
 import {
   addTypeIcon,
   addZero,
@@ -30,6 +31,14 @@ const pokemon = {
 };
 export const Pokedex = () => {
   const navigate = useNavigate();
+
+  const getInfo = async () => {
+    const pok = await getPokemonById(7);
+    console.log(pok);
+  };
+
+  getInfo()
+
 
   return (
     <Box
@@ -81,7 +90,7 @@ export const Pokedex = () => {
               sx={{
                 position: "fixed",
                 top: "33%",
-                transform: 'translateX(-55%)' ,
+                transform: "translateX(-55%)",
                 opacity: 0.5,
               }}
             >
