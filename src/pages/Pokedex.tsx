@@ -33,7 +33,7 @@ export const Pokedex = () => {
   const navigate = useNavigate();
 
   const getInfo = async () => {
-    const pok = await getPokemonById(7);
+    const pok = await getPokemonById(6);
     console.log(pok);
   };
 

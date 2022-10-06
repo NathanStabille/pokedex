@@ -42,11 +42,22 @@ export const getPokemonById = async (id: number) => {
     .then((res) => res.json())
     .catch((err) => alert(err));
 
+  const varietiesURL = resSpecies.varieties;
+
+  const filteredVarieties = varietiesURL.map(
+    (item: any) => !item.is_default && item.pokemon.url
+  );
+
+  const varietiesInfo = await Promise.all(
+    filteredVarieties.map((item: any) => item && getPokemonsData(item))
+  );
+
   return {
     name: res.name,
     image: res.sprites.other["official-artwork"].front_default,
     shiny: res.sprites.front_shiny,
     number: res.id,
+    nameJP: resSpecies.names[0].name,
     isLegendary: resSpecies.is_legendary,
     isMythical: resSpecies.is_mythical,
     height: res.height,
@@ -58,5 +69,6 @@ export const getPokemonById = async (id: number) => {
     spDefense: res.stats[4].base_stat,
     speed: res.stats[5].base_stat,
     type: res.types,
+    varietiesInfo: varietiesInfo
   };
 };
