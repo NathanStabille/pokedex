@@ -19,6 +19,9 @@ import rock from "../../assets/icons/rock.png";
 import steel from "../../assets/icons/steel.png";
 import water from "../../assets/icons/water.png";
 import { useNavigate } from "react-router-dom";
+import { usePokedexContext } from "../../contexts/PokedexContext";
+import { getPokemonById } from "../../api/pokemonAPI";
+import { IPokedexData } from "../../models/PokemonData";
 
 interface IPokemonCardProps {
   name: string;
@@ -94,7 +97,7 @@ export const changeColor = (type: string) => {
     case "ghost":
       return "#708ee9";
     case "grass":
-      return "#7ff775";
+      return "#81e078";
     case "ground":
       return "#f88951";
     case "ice":
@@ -135,9 +138,13 @@ export const PokemonCard = ({
 }: IPokemonCardProps) => {
   const navigate = useNavigate();
 
-  const toPokemon = (id: number) => {
+
+  const { setPokedexInfo} = usePokedexContext()
+
+  const toPokemon = async (id: number) => {
+    const pok = await getPokemonById(id)
+    setPokedexInfo(pok as IPokedexData)
     navigate("/pokedex");
-    console.log(id);
   };
   const pokemonTypes = type.map((item) => item.type.name.split(","));
   return (

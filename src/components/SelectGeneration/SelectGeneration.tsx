@@ -11,6 +11,7 @@ export const SelectGeneration = () => {
         variant="standard"
         disableUnderline
         autoWidth
+        value={3}
         defaultValue={1}
         sx={{ fontSize: "1.1rem" }}
         IconComponent={KeyboardArrowDown}

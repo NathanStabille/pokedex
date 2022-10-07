@@ -22,8 +22,8 @@ export const PokemonGallery = () => {
         mb={5}
       >
         {loading &&
-          loadingItemsTemplate.map(() => (
-            <Stack spacing={1}>
+          loadingItemsTemplate.map((item,key) => (
+            <Stack key={key} spacing={1}>
               <Skeleton variant="rounded" height={300} width={220} />
               <Skeleton variant="rounded" height={100} width={220} />
             </Stack>

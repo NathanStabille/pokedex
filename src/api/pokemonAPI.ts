@@ -36,8 +36,9 @@ export const getPokemonById = async (id: number) => {
     .then((res) => res.json())
     .catch((err) => alert(err));
 
+    
   const resSpecies = await fetch(
-    `https://pokeapi.co/api/v2/pokemon-species/${id}/`
+    res.species.url
   )
     .then((res) => res.json())
     .catch((err) => alert(err));
@@ -51,6 +52,7 @@ export const getPokemonById = async (id: number) => {
   const varietiesInfo = await Promise.all(
     filteredVarieties.map((item: any) => item && getPokemonsData(item))
   );
+
 
   return {
     name: res.name,
@@ -69,6 +71,6 @@ export const getPokemonById = async (id: number) => {
     spDefense: res.stats[4].base_stat,
     speed: res.stats[5].base_stat,
     type: res.types,
-    varietiesInfo: varietiesInfo
+    varietiesInfo: varietiesInfo || null
   };
 };

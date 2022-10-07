@@ -14,3 +14,23 @@ export interface IPokemonData {
   speed: number;
   type: [];
 }
+
+export interface IPokedexData {
+  attack: number;
+  defense: number;
+  height: number;
+  hp: number;
+  image: string;
+  isLegendary: boolean;
+  isMythical: boolean;
+  name: string;
+  nameJP: string;
+  number: number;
+  shiny: string;
+  spAttack: number;
+  spDefense: number;
+  speed: number;
+  type: [];
+  varietiesInfo: [];
+  weight: number;
+}
