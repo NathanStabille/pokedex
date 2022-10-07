@@ -1,9 +1,18 @@
 import { KeyboardArrowDown } from "@mui/icons-material";
 import { Box, MenuItem, Select } from "@mui/material";
+import { useState } from "react";
 import { usePokemonContext } from "../../contexts/PokemonContext";
 
 export const SelectGeneration = () => {
   const { getAllPokemons } = usePokemonContext();
+
+  const [value, setValue] = useState()
+
+  // const selectGen = (id: number) => {
+  //   getAllPokemons
+    
+
+  // }
 
   return (
     <Box height="100%" display="flex" alignItems="flex-end">
@@ -11,7 +20,6 @@ export const SelectGeneration = () => {
         variant="standard"
         disableUnderline
         autoWidth
-        value={3}
         defaultValue={1}
         sx={{ fontSize: "1.1rem" }}
         IconComponent={KeyboardArrowDown}
