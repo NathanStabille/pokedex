@@ -1,18 +1,24 @@
 import { KeyboardArrowDown } from "@mui/icons-material";
 import { Box, MenuItem, Select } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePokemonContext } from "../../contexts/PokemonContext";
 
 export const SelectGeneration = () => {
   const { getAllPokemons } = usePokemonContext();
 
-  const [value, setValue] = useState()
+  const getSelectValue = () => {
+    const savedValue = localStorage.getItem("savedValue");
+    if (!savedValue) {
+      return 1;
+    }
 
-  // const selectGen = (id: number) => {
-  //   getAllPokemons
-    
+    return savedValue;
+  };
+  const [selectValue, setSelectValue] = useState(getSelectValue());
 
-  // }
+  useEffect(() => {
+    localStorage.setItem("savedValue", selectValue.toString());
+  }, [selectValue]);
 
   return (
     <Box height="100%" display="flex" alignItems="flex-end">
@@ -20,9 +26,11 @@ export const SelectGeneration = () => {
         variant="standard"
         disableUnderline
         autoWidth
-        defaultValue={1}
+        value={selectValue}
+        defaultValue={"1"}
         sx={{ fontSize: "1.1rem" }}
         IconComponent={KeyboardArrowDown}
+        onChange={(e) => setSelectValue(e.target.value.toString())}
       >
         <MenuItem value={1} onClick={() => getAllPokemons(151, 0)}>
           1st Generation

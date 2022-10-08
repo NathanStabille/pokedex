@@ -14,6 +14,7 @@ export const Home = () => {
       display="flex"
       flexDirection="column"
       alignItems="center"
+      sx={{transition: '0.3s'}}
     >
       <img
         alt=""

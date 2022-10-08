@@ -13,19 +13,14 @@ interface IType {
   type: { name: string; url: string };
 }
 
-
 export const Pokedex = () => {
   const navigate = useNavigate();
 
-  const {pokedexInfo} = usePokedexContext()
-
-
+  const { pokedexInfo } = usePokedexContext();
 
   const pokemonTypes = pokedexInfo?.type.map((item: IType) =>
     item.type.name.split(",")
   );
-
-
 
   return (
     <Box
@@ -36,7 +31,7 @@ export const Pokedex = () => {
       display="flex"
       justifyContent="center"
       alignItems="center"
-      sx={{transition: '0.3s'}}
+      sx={{ transition: "0.3s" }}
     >
       <Container>
         <Box color="#FFF">

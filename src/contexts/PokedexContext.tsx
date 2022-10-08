@@ -1,5 +1,4 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { getPokemonById } from "../api/pokemonAPI";
+import { createContext, ReactNode, useContext, useState } from "react";
 import { IPokedexData } from "../models/PokemonData";
 
 interface IPokedexContextData {
