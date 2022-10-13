@@ -110,9 +110,9 @@ export const Pokedex = () => {
             </Box>
           </Box>
 
-          <Box width="100%">
+          <Box width="100%" color="#FFF" textAlign="center">
+            <Typography fontSize="1.3rem">Variations</Typography>
             <EvolutionChain
-            id={pokedexInfo.number}
               shiny={pokedexInfo.shiny}
               varieties={pokedexInfo.varietiesInfo}
             />

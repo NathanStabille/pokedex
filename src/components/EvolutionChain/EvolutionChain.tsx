@@ -1,13 +1,21 @@
 import { Grid, Typography } from "@mui/material";
-import { IPokemonData } from "../../models/PokemonData";
+import { getPokemonById } from "../../api/pokemonAPI";
+import { usePokedexContext } from "../../contexts/PokedexContext";
+import { IPokedexData, IPokemonData } from "../../models/PokemonData";
 
 interface IEvolutionChainProps {
   varieties: [];
   shiny: string;
-  id: number
 }
 
 export const EvolutionChain = ({ shiny, varieties }: IEvolutionChainProps) => {
+  const { setPokedexInfo } = usePokedexContext();
+
+  const switchPokemon = async (id: number) => {
+    const pok = await getPokemonById(id);
+    setPokedexInfo(pok as IPokedexData);
+  };
+
   return (
     <Grid
       container
@@ -46,10 +54,22 @@ export const EvolutionChain = ({ shiny, varieties }: IEvolutionChainProps) => {
               width="155px"
               m={1}
               textAlign="center"
-              sx={{ cursor: "pointer" }}
-              onClick={() => {}}
+              sx={{
+                ":hover": {
+                  transform: "scale(1.1)",
+                  transition: "0.3s ",
+                },
+              }}
             >
-              <img alt="pokemon" src={item.image} width="110px" />
+              <img
+                alt="pokemon"
+                src={item.image}
+                width="110px"
+                onClick={() => switchPokemon(item.number)}
+                style={{
+                  cursor: "pointer",
+                }}
+              />
               <Typography textTransform="capitalize">
                 {item.name.replace(/-/gi, " ")}
               </Typography>
