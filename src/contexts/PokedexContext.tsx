@@ -12,15 +12,12 @@ interface IPokedexProviderProps {
 
 const PokedexContext = createContext({} as IPokedexContextData);
 
-export const usePokedexContext = () => useContext(PokedexContext)
+export const usePokedexContext = () => useContext(PokedexContext);
 
 export const PokedexProvider: React.FC<IPokedexProviderProps> = ({
   children,
 }) => {
-
-
-  const [pokedexInfo, setPokedexInfo] = useState({} as IPokedexData)
-
+  const [pokedexInfo, setPokedexInfo] = useState({} as IPokedexData);
 
   return (
     <PokedexContext.Provider value={{ pokedexInfo, setPokedexInfo }}>

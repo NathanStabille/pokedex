@@ -112,6 +112,7 @@ export const Pokedex = () => {
 
           <Box width="100%">
             <EvolutionChain
+            id={pokedexInfo.number}
               shiny={pokedexInfo.shiny}
               varieties={pokedexInfo.varietiesInfo}
             />

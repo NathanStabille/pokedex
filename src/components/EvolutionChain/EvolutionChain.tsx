@@ -4,6 +4,7 @@ import { IPokemonData } from "../../models/PokemonData";
 interface IEvolutionChainProps {
   varieties: [];
   shiny: string;
+  id: number
 }
 
 export const EvolutionChain = ({ shiny, varieties }: IEvolutionChainProps) => {
