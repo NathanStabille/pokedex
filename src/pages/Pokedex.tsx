@@ -1,6 +1,7 @@
 import { KeyboardArrowLeft } from "@mui/icons-material";
-import { Box, Container, IconButton, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { EvolutionChain } from "../components/EvolutionChain/EvolutionChain";
 import {
   addTypeIcon,
   addZero,
@@ -31,19 +32,42 @@ export const Pokedex = () => {
       display="flex"
       justifyContent="center"
       alignItems="center"
+      overflow="hidden"
       sx={{ transition: "0.3s" }}
     >
-      <Container>
+      <Box width="100%" height="100%">
         <Box color="#FFF">
-          <IconButton sx={{ color: "#FFF" }} onClick={() => navigate("/home")}>
-            <KeyboardArrowLeft fontSize="large" />
-          </IconButton>
-          <Typography fontSize="1.5rem">
-            {`#${addZero(pokedexInfo.number)}${pokedexInfo.number}`}
-          </Typography>
-          <Typography fontSize="3rem" sx={{ textTransform: "capitalize" }}>
-            {pokedexInfo.name.replace(/-/gi, " ")}
-          </Typography>
+          <Box display="flex" alignItems="center">
+            <IconButton
+              sx={{ color: "#FFF" }}
+              onClick={() => navigate("/home")}
+            >
+              <KeyboardArrowLeft fontSize="large" />
+            </IconButton>
+            <Typography fontSize="1.5rem">
+              {`#${addZero(pokedexInfo.number)}${pokedexInfo.number}`}
+            </Typography>
+          </Box>
+          <Box
+            color="#FFF"
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+            width="100%"
+            paddingX={5}
+          >
+            <Typography fontSize="2.5rem" sx={{ textTransform: "capitalize" }}>
+              {pokedexInfo.name.replace(/-/gi, " ")}
+            </Typography>
+            <Box>
+              <Typography fontWeight="300">
+                {`Height: ${pokedexInfo.height / 10} m`}
+              </Typography>
+              <Typography fontWeight="300">
+                {`Weight: ${pokedexInfo.weight / 10} kg`}
+              </Typography>
+            </Box>
+          </Box>
         </Box>
         <Box
           display="flex"
@@ -51,17 +75,10 @@ export const Pokedex = () => {
           alignItems="center"
           width="100%"
         >
-          <Box color="#FFF" width="100%">
-            <Typography fontWeight="300">
-              {`Height: ${pokedexInfo.height / 10} m`}
-            </Typography>
-            <Typography fontWeight="300">
-              {`Weight: ${pokedexInfo.weight / 10} kg`}
-            </Typography>
-          </Box>
           <Box
             color="#FFF"
             display="flex"
+            flexDirection="column"
             justifyContent="center"
             alignItems="center"
             width="100%"
@@ -72,18 +89,31 @@ export const Pokedex = () => {
               color="#FFF"
               sx={{
                 position: "fixed",
-                top: "33%",
-                transform: "translateX(-55%)",
+                top: "30%",
                 opacity: 0.5,
               }}
             >
               {pokedexInfo.nameJP}
             </Typography>
 
-            <img
-              alt="pokemon"
-              src={pokedexInfo.image}
-              style={{ marginRight: "50px" }}
+            <Box
+              width="100%"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <img
+                alt="pokemon"
+                src={pokedexInfo.image}
+                style={{ marginRight: "50px", marginLeft: "70px" }}
+              />
+            </Box>
+          </Box>
+
+          <Box width="100%">
+            <EvolutionChain
+              shiny={pokedexInfo.shiny}
+              varieties={pokedexInfo.varietiesInfo}
             />
           </Box>
 
@@ -96,19 +126,29 @@ export const Pokedex = () => {
             paddingLeft={5}
             color={changeColor(pokemonTypes[0][0])}
           >
-            <img
-              alt="type"
-              src={addTypeIcon(pokemonTypes[0][0])}
-              style={{
-                borderRadius: "100%",
-                boxShadow: "0 2px 10px rgba(0, 0, 0, 0.281)",
-              }}
-              width="50px"
-            />
+            <Box>
+              {pokedexInfo.type.map((item: IType, key) => {
+                return (
+                  <img
+                    key={key}
+                    alt="type"
+                    src={addTypeIcon(item.type.name)}
+                    style={{
+                      borderRadius: "100%",
+                      boxShadow: "0 2px 10px rgba(0, 0, 0, 0.281)",
+                      marginRight: 10,
+                    }}
+                    width="50px"
+                  />
+                );
+              })}
+            </Box>
+
             <Typography fontSize="2rem" color="#FFF" mb={3} mt={1}>
               Base stats:
             </Typography>
             <Box
+              width="100%"
               borderLeft="5px solid #ffffff7b"
               display="flex"
               flexDirection="column"
@@ -154,7 +194,7 @@ export const Pokedex = () => {
             </Box>
           </Box>
         </Box>
-      </Container>
+      </Box>
     </Box>
   );
 };
