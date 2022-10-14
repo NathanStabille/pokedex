@@ -31,7 +31,7 @@ export const getPokemonsData = async (url: string) => {
   };
 };
 
-export const getPokemonById = async (id: number) => {
+export const getPokemonById = async (id: number | string) => {
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     .then((res) => res.json())
     .catch((err) => alert(err));

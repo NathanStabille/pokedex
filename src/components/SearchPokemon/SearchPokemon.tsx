@@ -1,12 +1,27 @@
-import { Autocomplete, Box, Input, TextField } from "@mui/material";
+import { Autocomplete, Box, TextField, useTheme } from "@mui/material";
 import { useState } from "react";
+import { getPokemonById } from "../../api/pokemonAPI";
+import { usePokedexContext } from "../../contexts/PokedexContext";
 import { pokemonsNames } from "../../data/AutoCompleteData";
+import { IPokedexData } from "../../models/PokemonData";
 
 export const SearchPokemon = () => {
-  const [inputText, setInputText] = useState<string | null>("");
+  const [inputText, setInputText] = useState<string | null>(null);
+
+  const { setPokedexInfo } = usePokedexContext();
+
+  const theme = useTheme();
+
+  const getPokemon = async (input: string | null) => {
+    if (input !== "" && input !== null) {
+      const pok = await getPokemonById(input as string);
+      setPokedexInfo(pok as IPokedexData);
+      setInputText("");
+    }
+  };
 
   return (
-    <Box width="100%">
+    <Box width="100%" mt={1}>
       <Autocomplete
         freeSolo
         value={inputText}
@@ -15,33 +30,22 @@ export const SearchPokemon = () => {
           setInputText(newValue);
         }}
         options={pokemonsNames}
+        onKeyDown={(e) => e.key === "Enter" && getPokemon(inputText)}
         sx={{ width: 300 }}
         renderInput={(params) => (
           <TextField
             {...params}
-            placeholder="Search for pokemon by name or id"
+            placeholder="Search Pokemon"
             variant="standard"
             sx={{
-              bgcolor: "#ffffff68",
+              color: "#000",
+              bgcolor: theme.palette.background.default,
               borderRadius: 2,
               paddingX: 1,
             }}
           />
         )}
       />
-
-      {/* <Input
-        disableUnderline
-        placeholder="Search for pokemon by name or id"
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
-        sx={{
-          bgcolor: "#ffffff68",
-          borderRadius: 2,
-          paddingX: 1,
-          fontSize: "1.1rem",
-        }}
-      /> */}
     </Box>
   );
 };
