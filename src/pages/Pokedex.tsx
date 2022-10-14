@@ -7,6 +7,7 @@ import {
   addZero,
   changeColor,
 } from "../components/PokemonCard/PokemonCard";
+import { SearchPokemon } from "../components/SearchPokemon/SearchPokemon";
 import { usePokedexContext } from "../contexts/PokedexContext";
 
 interface IType {
@@ -31,6 +32,7 @@ export const Pokedex = () => {
       padding={3}
       display="flex"
       justifyContent="center"
+      flexDirection='column'
       alignItems="center"
       overflow="hidden"
       sx={{ transition: "0.3s" }}
@@ -196,6 +198,7 @@ export const Pokedex = () => {
           </Box>
         </Box>
       </Box>
+      <SearchPokemon/>
     </Box>
   );
 };

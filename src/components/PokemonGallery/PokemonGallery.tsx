@@ -1,15 +1,18 @@
 import { Box, Grid, Skeleton, Stack } from "@mui/material";
+import { useEffect } from "react";
 import { usePokemonContext } from "../../contexts/PokemonContext";
 import { PokemonCard } from "../PokemonCard/PokemonCard";
 
 export const PokemonGallery = () => {
-  const { pokemons, filteredPokemons, loading } = usePokemonContext();
+  const { pokemons, filteredPokemons, loading, setPokemons } =
+    usePokemonContext();
 
   const loadingItemsTemplate = [] as number[];
 
   for (let index = 0; index < 150; index++) {
     loadingItemsTemplate.push(index);
   }
+
 
   return (
     <Box mt={3}>
@@ -22,7 +25,7 @@ export const PokemonGallery = () => {
         mb={5}
       >
         {loading &&
-          loadingItemsTemplate.map((item,key) => (
+          loadingItemsTemplate.map((item, key) => (
             <Stack key={key} spacing={1}>
               <Skeleton variant="rounded" height={300} width={220} />
               <Skeleton variant="rounded" height={100} width={220} />
