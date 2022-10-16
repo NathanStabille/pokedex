@@ -21,7 +21,7 @@ export const SearchPokemon = () => {
   };
 
   return (
-    <Box width="100%" mt={1}>
+    <Box>
       <Autocomplete
         freeSolo
         value={inputText}
@@ -31,7 +31,7 @@ export const SearchPokemon = () => {
         }}
         options={pokemonsNames}
         onKeyDown={(e) => e.key === "Enter" && getPokemon(inputText)}
-        sx={{ width: 300 }}
+        sx={{ width: 300}}
         renderInput={(params) => (
           <TextField
             {...params}

@@ -41,6 +41,13 @@ export const DarkTheme = createTheme({
         },
       },
     },
+    MuiAutocomplete: {
+      styleOverrides: {
+        listbox: {
+          textTransform: "capitalize",
+        },
+      },
+    },
   },
 });
 
@@ -82,6 +89,13 @@ export const LightTheme = createTheme({
         },
         body: {
           transition: "0.3s",
+        },
+      },
+    },
+    MuiAutocomplete: {
+      styleOverrides: {
+        listbox: {
+          textTransform: "capitalize",
         },
       },
     },
