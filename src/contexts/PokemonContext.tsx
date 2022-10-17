@@ -40,11 +40,12 @@ export const PokemonProvider: React.FC<IPokemonProviderProps> = ({
     [] as IPokemonData[]
   );
   const [loading, setLoading] = useState(true);
-  
+
   const getAllPokemons = async (number = 151, offset = 0) => {
-    setLoading(true)
+    setLoading(true);
     const data = await getPokemonsRef(number, offset);
     const result = data.map((pokemon: IPokemons) => pokemon.url);
+
     Promise.all(result.map((item: string) => getPokemonsData(item))).then(
       (res) => {
         setPokemons(res);

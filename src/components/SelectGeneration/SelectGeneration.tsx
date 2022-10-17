@@ -6,19 +6,7 @@ import { usePokemonContext } from "../../contexts/PokemonContext";
 export const SelectGeneration = () => {
   const { getAllPokemons } = usePokemonContext();
 
-  const getSelectValue = () => {
-    const savedValue = localStorage.getItem("savedValue");
-    if (!savedValue) {
-      return 1;
-    }
-
-    return savedValue;
-  };
-  const [selectValue, setSelectValue] = useState(getSelectValue());
-
-  useEffect(() => {
-    localStorage.setItem("savedValue", selectValue.toString());
-  }, [selectValue]);
+  const [selectValue, setSelectValue] = useState('1');
 
   return (
     <Box height="100%" display="flex" alignItems="flex-end">

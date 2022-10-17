@@ -16,6 +16,7 @@ import {
 import { SearchPokemon } from "../components/SearchPokemon/SearchPokemon";
 import { usePokedexContext } from "../contexts/PokedexContext";
 import { motion } from "framer-motion";
+import { usePokemonContext } from "../contexts/PokemonContext";
 
 interface IType {
   slot: number;
@@ -28,11 +29,17 @@ export const Pokedex = () => {
   const theme = useTheme();
   const mdDown = useMediaQuery(theme.breakpoints.down("md"));
 
+  const { getAllPokemons } = usePokemonContext();
   const { pokedexInfo } = usePokedexContext();
 
   const pokemonTypes = pokedexInfo.type.map((item: IType) =>
     item.type.name.split(",")
   );
+
+  const toHome = () => {
+    getAllPokemons(151, 0);
+    navigate("/home");
+  };
 
   return (
     <motion.div
@@ -63,10 +70,7 @@ export const Pokedex = () => {
         >
           <Box color="#FFF" width="100%">
             <Box display="flex" alignItems="center">
-              <IconButton
-                sx={{ color: "#FFF" }}
-                onClick={() => navigate("/home")}
-              >
+              <IconButton sx={{ color: "#FFF" }} onClick={toHome}>
                 <KeyboardArrowLeft fontSize="large" />
               </IconButton>
               <Typography fontSize="1.5rem">
@@ -137,7 +141,7 @@ export const Pokedex = () => {
                 <img
                   alt="pokemon"
                   src={pokedexInfo.image}
-                  width={mdDown ? "300px" : "100%"}
+                  width={mdDown ? "300px" : ""}
                   style={{ marginRight: "70px", marginLeft: "70px" }}
                 />
               </Box>

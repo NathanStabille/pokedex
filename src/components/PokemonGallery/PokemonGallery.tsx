@@ -1,4 +1,5 @@
 import { Box, Grid, Skeleton, Stack } from "@mui/material";
+import { useEffect, useState } from "react";
 import { usePokemonContext } from "../../contexts/PokemonContext";
 import { PokemonCard } from "../PokemonCard/PokemonCard";
 
@@ -6,7 +7,6 @@ export const PokemonGallery = () => {
   const { pokemons, filteredPokemons, loading } = usePokemonContext();
 
   const loadingItemsTemplate = [] as number[];
-
   for (let index = 0; index < 150; index++) {
     loadingItemsTemplate.push(index);
   }
