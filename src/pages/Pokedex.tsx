@@ -36,11 +36,6 @@ export const Pokedex = () => {
     item.type.name.split(",")
   );
 
-  const toHome = () => {
-    getAllPokemons(151, 0);
-    navigate("/home");
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -70,7 +65,10 @@ export const Pokedex = () => {
         >
           <Box color="#FFF" width="100%">
             <Box display="flex" alignItems="center">
-              <IconButton sx={{ color: "#FFF" }} onClick={toHome}>
+              <IconButton
+                sx={{ color: "#FFF" }}
+                onClick={() => navigate("/home")}
+              >
                 <KeyboardArrowLeft fontSize="large" />
               </IconButton>
               <Typography fontSize="1.5rem">
