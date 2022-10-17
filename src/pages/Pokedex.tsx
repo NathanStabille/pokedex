@@ -1,5 +1,11 @@
 import { KeyboardArrowLeft } from "@mui/icons-material";
-import { Box, IconButton, Typography } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { EvolutionChain } from "../components/EvolutionChain/EvolutionChain";
 import {
@@ -19,6 +25,9 @@ interface IType {
 export const Pokedex = () => {
   const navigate = useNavigate();
 
+  const theme = useTheme();
+  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
+
   const { pokedexInfo } = usePokedexContext();
 
   const pokemonTypes = pokedexInfo.type.map((item: IType) =>
@@ -33,14 +42,14 @@ export const Pokedex = () => {
       transition={{ duration: 0.3 }}
     >
       <Box
-        height="100vh"
+        height={mdDown ? "100%" : "100vh"}
         width="100vw"
         bgcolor={changeColor(pokemonTypes[0][0])}
         padding={3}
         display="flex"
         justifyContent="center"
         flexDirection="column"
-        overflow="hidden"
+        overflow={mdDown ? "auto" : "hidden"}
         sx={{ transition: "0.3s" }}
       >
         <Box
@@ -50,6 +59,7 @@ export const Pokedex = () => {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
+          mb={mdDown ? 3 : 0}
         >
           <Box color="#FFF" width="100%">
             <Box display="flex" alignItems="center">
@@ -66,11 +76,17 @@ export const Pokedex = () => {
             <Box
               color="#FFF"
               display="flex"
+              flexDirection={mdDown ? "column" : "row"}
               justifyContent="space-between"
               alignItems="center"
               paddingX={5}
+              mb={mdDown ? 5 : 0}
             >
-              <Typography fontSize="3rem" sx={{ textTransform: "capitalize" }}>
+              <Typography
+                fontSize="3rem"
+                textAlign="center"
+                sx={{ textTransform: "capitalize" }}
+              >
                 {pokedexInfo.name.replace(/-/gi, " ")}
               </Typography>
               <Box>
@@ -85,6 +101,7 @@ export const Pokedex = () => {
           </Box>
           <Box
             display="flex"
+            flexDirection={mdDown ? "column" : "row"}
             justifyContent="space-around"
             alignItems="center"
             height="100%"
@@ -98,12 +115,12 @@ export const Pokedex = () => {
               alignItems="center"
             >
               <Typography
-                fontSize="6.5vw"
+                fontSize={mdDown ? "20vw" : "6.5vw"}
                 fontWeight="500"
                 color="#FFF"
                 sx={{
                   position: "absolute",
-                  top: "30%",
+                  top: mdDown ? "30%" : "30%",
                   opacity: 0.5,
                   wordWrap: "normal",
                 }}
@@ -111,10 +128,16 @@ export const Pokedex = () => {
                 {pokedexInfo.nameJP}
               </Typography>
 
-              <Box display="flex" justifyContent="center" alignItems="center">
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                mb={mdDown ? 5 : 0}
+              >
                 <img
                   alt="pokemon"
                   src={pokedexInfo.image}
+                  width={mdDown ? "300px" : "100%"}
                   style={{ marginRight: "70px", marginLeft: "70px" }}
                 />
               </Box>
@@ -129,11 +152,12 @@ export const Pokedex = () => {
             </Box>
 
             <Box
+              width={mdDown ? "100%" : "300px"}
               display="flex"
               justifyContent="center"
               flexDirection="column"
-              alignItems="flex-start"
-              paddingLeft={5}
+              alignItems={mdDown ? "center" : "flex-start"}
+              paddingLeft={mdDown ? 0 : 5}
               color={changeColor(pokemonTypes[0][0])}
             >
               <Box>
@@ -158,12 +182,12 @@ export const Pokedex = () => {
                 Base stats:
               </Typography>
               <Box
-                minWidth="300px"
-                borderLeft="5px solid #ffffff7b"
+                minWidth={mdDown ? "100%" : "300px"}
+                borderLeft={mdDown ? "" : "5px solid #ffffff7b"}
                 display="flex"
                 flexDirection="column"
-                alignItems="flex-start"
-                paddingLeft={3}
+                alignItems={mdDown ? "center" : "flex-start"}
+                paddingLeft={mdDown ? 0 : 3}
               >
                 <Typography
                   mb={2}

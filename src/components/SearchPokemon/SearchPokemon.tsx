@@ -1,4 +1,5 @@
-import { Autocomplete, Box, TextField, useTheme } from "@mui/material";
+import { Search } from "@mui/icons-material";
+import { Autocomplete, Box, Button, TextField, useTheme } from "@mui/material";
 import { useState } from "react";
 import { getPokemonById } from "../../api/pokemonAPI";
 import { usePokedexContext } from "../../contexts/PokedexContext";
@@ -21,7 +22,12 @@ export const SearchPokemon = () => {
   };
 
   return (
-    <Box>
+    <Box
+      display="flex"
+      alignItems="center"
+      width="100%"
+      justifyContent="center"
+    >
       <Autocomplete
         freeSolo
         value={inputText}
@@ -31,7 +37,7 @@ export const SearchPokemon = () => {
         }}
         options={pokemonsNames}
         onKeyDown={(e) => e.key === "Enter" && getPokemon(inputText)}
-        sx={{ width: 300}}
+        sx={{ width: 300 }}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -46,6 +52,16 @@ export const SearchPokemon = () => {
           />
         )}
       />
+
+      <Button
+        onClick={() => getPokemon(inputText)}
+        variant="outlined"
+        color="secondary"
+        sx={{ borderRadius: 3, ml: 2 }}
+        startIcon={<Search />}
+      >
+        Search
+      </Button>
     </Box>
   );
 };

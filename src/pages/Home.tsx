@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import Pokeball from "../assets/pokeball.png";
 import { SearchBar } from "../components/SearchBar/SearchBar";
 import { PokemonGallery } from "../components/PokemonGallery/PokemonGallery";
@@ -7,6 +7,9 @@ import { SelectGeneration } from "../components/SelectGeneration/SelectGeneratio
 import { motion } from "framer-motion";
 
 export const Home = () => {
+  const theme = useTheme();
+  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -38,14 +41,16 @@ export const Home = () => {
           src={PokedexLogo}
           alt="pokemon"
           width="350px"
-          style={{ cursor: "pointer" }}
+          style={{ marginBottom: mdDown ? 50 : 0 }}
         />
         <Box
           width="100%"
           paddingX="5%"
           display="flex"
+          flexDirection={mdDown ? "column" : "row"}
           justifyContent="space-between"
           alignItems="center"
+          mb={mdDown ? 5 : 0}
         >
           <SelectGeneration />
           <SearchBar />

@@ -6,7 +6,8 @@ export const ModalSearchPokemon = () => {
   return (
     <Box
       height="100vh"
-      width="100vw"
+      width="100%"
+      paddingX={2}
       bgcolor="#0f0f0f"
       display="flex"
       flexDirection="column"
@@ -25,7 +26,7 @@ export const ModalSearchPokemon = () => {
         alt="pikachu"
         width="100px"
       />
-      <Typography fontSize="3rem" mb={3}>
+      <Typography fontSize="3rem" paddingBottom={3} textAlign="center">
         SEARCH A POKEMON
       </Typography>
 
