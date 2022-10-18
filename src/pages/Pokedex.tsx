@@ -16,7 +16,6 @@ import {
 import { SearchPokemon } from "../components/SearchPokemon/SearchPokemon";
 import { usePokedexContext } from "../contexts/PokedexContext";
 import { motion } from "framer-motion";
-import { usePokemonContext } from "../contexts/PokemonContext";
 
 interface IType {
   slot: number;
@@ -29,7 +28,6 @@ export const Pokedex = () => {
   const theme = useTheme();
   const mdDown = useMediaQuery(theme.breakpoints.down("md"));
 
-  const { getAllPokemons } = usePokemonContext();
   const { pokedexInfo } = usePokedexContext();
 
   const pokemonTypes = pokedexInfo.type.map((item: IType) =>
