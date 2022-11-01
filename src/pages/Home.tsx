@@ -5,10 +5,13 @@ import { PokemonGallery } from "../components/PokemonGallery/PokemonGallery";
 import PokedexLogo from "../assets/PokedexLogo.png";
 import { SelectGeneration } from "../components/SelectGeneration/SelectGeneration";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 export const Home = () => {
   const theme = useTheme();
   const mdDown = useMediaQuery(theme.breakpoints.down("md"));
+
+  const [search, setSearch] = useState('')
 
   return (
     <motion.div
@@ -52,8 +55,8 @@ export const Home = () => {
           alignItems="center"
           mb={mdDown ? 5 : 0}
         >
-          <SelectGeneration />
-          <SearchBar />
+          <SelectGeneration search={search} setSearch={setSearch} />
+          <SearchBar search={search} setSearch={setSearch} />
         </Box>
 
         <PokemonGallery />

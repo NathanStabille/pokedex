@@ -12,16 +12,20 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { usePokemonContext } from "../../contexts/PokemonContext";
 import { useThemeContext } from "../../contexts/ThemeContext";
 
-export const SearchBar = () => {
+interface ISearchBarProps {
+  search: string;
+  setSearch: (search: string) => void;
+}
+
+export const SearchBar = ({ search, setSearch }: ISearchBarProps) => {
   const theme = useTheme();
 
   const { themeName, toggleTheme } = useThemeContext();
   const { pokemons, setFilteredPokemons, getAllPokemons } = usePokemonContext();
-  const [search, setsearch] = useState("");
 
   const mdDown = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -54,7 +58,7 @@ export const SearchBar = () => {
             placeholder="Search Pokemon..."
             sx={{ fontSize: "1.1rem", paddingX: 1 }}
             startAdornment={<Search sx={{ color: "#CCC", mr: 1 }} />}
-            onChange={(e) => setsearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
           />
         </Box>
         <IconButton
