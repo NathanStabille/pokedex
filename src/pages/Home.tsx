@@ -55,7 +55,7 @@ export const Home = () => {
           alignItems="center"
           mb={mdDown ? 5 : 0}
         >
-          <SelectGeneration search={search} setSearch={setSearch} />
+          <SelectGeneration setSearch={setSearch} />
           <SearchBar search={search} setSearch={setSearch} />
         </Box>
 

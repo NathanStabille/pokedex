@@ -2,7 +2,6 @@ import {
   createContext,
   ReactNode,
   useContext,
-  useEffect,
   useState,
 } from "react";
 import { getPokemonsData, getPokemonsRef } from "../api/pokemonAPI";
@@ -53,10 +52,6 @@ export const PokemonProvider: React.FC<IPokemonProviderProps> = ({
       }
     );
   };
-
-  useEffect(() => {
-    getAllPokemons();
-  }, []);
 
   return (
     <PokemonContext.Provider

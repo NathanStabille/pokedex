@@ -1,5 +1,4 @@
 import { Box, Grid, Skeleton, Stack } from "@mui/material";
-import { useEffect, useState } from "react";
 import { usePokemonContext } from "../../contexts/PokemonContext";
 import { PokemonCard } from "../PokemonCard/PokemonCard";
 

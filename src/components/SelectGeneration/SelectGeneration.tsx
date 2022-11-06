@@ -1,20 +1,62 @@
 import { KeyboardArrowDown } from "@mui/icons-material";
 import { Box, MenuItem, Select } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePokemonContext } from "../../contexts/PokemonContext";
 
 interface ISelectGenerationProps {
-  search: string;
   setSearch: (search: string) => void;
 }
 
-export const SelectGeneration = ({
-  search,
-  setSearch,
-}: ISelectGenerationProps) => {
+export const SelectGeneration = ({ setSearch }: ISelectGenerationProps) => {
   const { getAllPokemons } = usePokemonContext();
 
-  const [selectValue, setSelectValue] = useState("1");
+  const getGenerationValue = () => {
+    const savedItems = localStorage.getItem("savedGeneration");
+
+    if (!savedItems) {
+      return "1";
+    }
+
+    return savedItems;
+  };
+
+  const [selectValue, setSelectValue] = useState(getGenerationValue());
+
+  useEffect(() => {
+    switch (selectValue) {
+      case "1":
+        getGeneration(151, 0);
+        break;
+      case "2":
+        getGeneration(100, 151);
+        break;
+      case "3":
+        getGeneration(135, 251);
+        break;
+      case "4":
+        getGeneration(107, 386);
+        break;
+      case "5":
+        getGeneration(156, 493);
+        break;
+      case "6":
+        getGeneration(72, 649);
+        break;
+      case "7":
+        getGeneration(88, 721);
+        break;
+      case "8":
+        getGeneration(96, 809);
+        break;
+      case "10":
+        getGeneration(10000, 905);
+        break;
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("savedGeneration", selectValue);
+  }, [selectValue]);
 
   const getGeneration = (limit: number, offset: number) => {
     setSearch("");
