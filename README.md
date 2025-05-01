@@ -4,7 +4,7 @@
 
 Pokedex developed with ReactJS.
 
-Site: https://pokedex-nine-zeta.vercel.app/
+Site: [https://pokedex-nine-zeta.vercel.app/](https://pokedex.empthy.dev/)
 <br>
 <br>
 
@@ -40,4 +40,4 @@ Nathan Stabille
 
 https://www.linkedin.com/in/nathan-stabille
 
-https://nathanstabille.vercel.app/
+https://empthy.dev
