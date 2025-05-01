@@ -18,7 +18,7 @@ Site: [https://pokedex-nine-zeta.vercel.app/](https://pokedex.empthy.dev/)
 
 <br>
 <div style= "display: flex">
-<img style="border: solid 1px; margin: 3px;" src="./public/github/pokedex.png">
+<img style="border: solid 1px; margin: 3px;" src="./public/github/screenshot.png">
 <img style="border: solid 1px; margin: 3px;" src="./public/github/pokedexGIF.gif">
 </div>
 <br>
