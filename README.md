@@ -2,7 +2,7 @@
 
 ## About
 
-Pokedex developed with ReactJS.
+A full-featured Pokédex built with individual detail pages for every Pokémon, including stats, types, and more.
 
 Site: [https://pokedex-nine-zeta.vercel.app/](https://pokedex.empthy.dev/)
 <br>
